@@ -118,17 +118,17 @@ export default function move(list: List, source: string, destination: string): L
     throw new Error('The destination coult not find in database');
   }
 
-  // Assigned the properties of moving file to use after deleting from current position
+  // Assigned the properties of moving file to move
 
   const moveFileProperties = list[indexOfSourceFolder].files[indexOfSourceFile];
-
-  // Deleted the file from source folder
-
-  list[indexOfSourceFolder].files.splice(indexOfSourceFile, 1);
 
   // Pasted into destination folder
 
   list[indexOfDestinationFolder].files.push(moveFileProperties);
+
+  // Deleted the file from source folder
+
+  list[indexOfSourceFolder].files.splice(indexOfSourceFile, 1);
 
   // Returned copy of list which has the new state of file
   return list;
